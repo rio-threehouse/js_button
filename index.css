@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.box {
+  width: 100px;
+  height: 100px;
+  background: skyblue;
+  cursor: pointer;
+  transition: 0.8s;
+}
+
+.circle {
+  background: pink;
+  border-radius: 50%;
+  transform: rotate(360deg);
+  /* transform: scale(0.5); */
+}

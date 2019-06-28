@@ -7,29 +7,44 @@
 </head>
 
 <body>
-  <div id="target1" class="box"></div>
-  <div id="target2" class="box"></div>
-  <div id="target3" class="box"></div>
-
+  
   <script>
+    // 厳格モード（エラーテェック）
     'use strict';
+    // 難易度を変えられるようにnum　数値を変るとdivの数が変わる
+    const num = 10;
 
-    const target1 = document.getElementById('target1');
-    const target2 = document.getElementById('target2');
-    const target3 = document.getElementById('target3');
+    // 0~4の数字の中にランダムでwinnerをつける
+    const winner = Math.floor(Math.random() * num);
 
-    target1.addEventListener('click', function() {
-      target1.classList.toggle('circle');
-    });
+    for(let i = 0; i < num; i++) {
+      const div = document.createElement('div');
+      div.classList.add('box');
 
-    target2.addEventListener('click', function() {
-      target2.classList.toggle('circle');
-    });
+      // iがwinnerだった時にwinというデータを持たせる
+      if (i === winner) {
+        div.dataset.result = 'win';
+      } else {
+        div.dataset.result = 'lose';
+      }
 
-    target3.addEventListener('click', function() {
-      target3.classList.toggle('circle');
-    });
+      // クリックした時の動作
+      div.addEventListener('click', function() {
+        // クリックしたdivがwinnerだったら行う
+        if (div.dataset.result === 'win') {
+          div.classList.add('win');
+          div.textContent = 'Win!';
 
+          // それ以外だったら行う
+        } else {
+          div.classList.add('lose');
+          div.textContent = 'lose';
+        }
+      });
+
+      // divを表示する
+      document.body.append(div);
+    }
   </script>
 </body>
 </html>
